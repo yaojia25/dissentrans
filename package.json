@@ -1,0 +1,74 @@
+{
+  "name": "dissentrans",
+  "displayName": "异言",
+  "description": "异步翻译插件",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "publisher": "Jasyo",
+  "categories": [
+    "Other"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "异言",
+      "properties": {
+        "dissentrans.appid": {
+          "type": "string",
+          "default": "",
+          "description": "百度翻译应用id",
+          "scope": "window"
+        },
+        "dissentrans.key": {
+          "type": "string",
+          "default": "",
+          "description": "百度翻译密钥",
+          "scope": "window"
+        },
+        "dissentrans.timeout": {
+          "type": "integer",
+          "default": 7000,
+          "description": "状态栏结果显示超时时间（ms）",
+          "scope": "window"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "dissentrans.translate",
+        "title": "Translate: 翻译光标下的单词"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "dissentrans.translate",
+        "key": "Ctrl+4",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.60.0",
+    "@vscode/test-electron": "^2.1.3",
+    "eslint": "^8.16.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "qs": "^6.10.5"
+  },
+  "icon": "icon.png"
+}
